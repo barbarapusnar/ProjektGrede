@@ -1,0 +1,110 @@
+﻿@model IEnumerable<ProjektGrede.Models.PodatkiSenzorjev>
+
+@{
+    ViewBag.Title = "Start";
+}
+<div class="container text-center">
+    <div class="row row-eq-height" id="vremeCont">
+        <div id="live">
+            @Html.Partial("_postaje", Model)
+        </div>
+    </div>
+    <div class="row">
+        <div class="card text-white  mb-3 col-md-push-1 col-md-3" style="max-width:300px;background-color:wheat;margin:5px 5px 5px 5px">
+            <div class="card-header">Agro meteorološki podatki</div>
+            <div class="card-body">
+                <h4 class="card-title">Bilje</h4>
+                <p class="card-text">
+                    <ul class="list-group" style="background-color:transparent">
+                        <li class="list-group-item">Datum: @ViewData["datum"]</li>
+                        <li class="list-group-item">Temperatura: @ViewData["temp"]°C</li>
+                        <li class="list-group-item">Vlaga: @ViewData["vlaga"]%</li>
+                        <li class="list-group-item">Omočenost lista: @ViewData["omocenost"]</li>
+                    </ul>
+                </p>
+            </div>
+            <div class="card-body">
+                <a class="card-link" href="http://meteo.arso.gov.si/uploads/probase/www/agromet/bulletin/sl/bilten.html?ind_podreg=5">ARSO</a>
+            </div>
+            <div class="card-footer text-muted">
+                Agrometeorološki podatki ARSO
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+
+
+
+
+
+
+<script>
+
+    $(function () {
+        setInterval(function () { $('#live').load('/Home/_indexPostaje') }, 10000);
+    });
+
+    $(document).ready(majhen);
+    $(window).on('resize', majhen);
+
+    function majhen() {
+        if ($(window).width() <= 600) {
+            $('#map').css("height", "250");
+            $('#arsologo').css("height", "100");
+        }
+        else {
+            $('#map').css("height", "490");
+            $('#arsologo').css("height", "auto");
+        };
+    }
+
+
+    function myMap() {
+        var mapCanvas = document.getElementById("map");
+        var mapOptions = {
+            center: new google.maps.LatLng(45.952766, 13.650980),
+            zoom: 13,
+            panControl: false,
+            zoomControl: false,
+            mapTypeControl: true,
+            scaleControl: false,
+            streetViewControl: false,
+            overviewMapControl: false,
+            rotateControl: false,
+            gestureHandling: 'cooperative'
+        };
+
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+
+        var marker1 = new google.maps.Marker({
+            position: new google.maps.LatLng(45.952720, 13.668899),
+            label: "1"
+
+        });
+        var marker2 = new google.maps.Marker({
+            position: new google.maps.LatLng(45.949988, 13.650484),
+            label: "2"
+
+        });
+        var marker3 = new google.maps.Marker({
+            position: new google.maps.LatLng(45.953065, 13.636372),
+            label: "3"
+
+        });
+
+        marker1.setMap(map);
+        marker2.setMap(map);
+        marker3.setMap(map);
+
+        marker1.addListener('click', function () { location.href = "/Podatki/Postaja/1"; });
+        marker2.addListener('click', function () { location.href = "/Podatki/Postaja/2"; });
+        marker3.addListener('click', function () { location.href = "/Podatki/Postaja/3"; });
+
+    }
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYVCxh0G-I-FtUD6b1hMUWiQ6pY4XSpdk&callback=myMap"></script>
+

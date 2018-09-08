@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ProjektGrede.Models.PodatkiSenzorjev>
+@{
+    ViewBag.Title = "PostajaLive";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2 id="podatki">Postaja @ViewData["id"] ~ <i style="color:red">LIVE</i></h2>
+
+    <div class="btn-group btn-group-sm">
+        <a id="1" href="/Podatki/PostajaLive/1" class="btn btn-success">Greda 1</a>
+        <a id="2" href="/Podatki/PostajaLive/2" class="btn btn-success">Greda 2</a>
+        <a id="3" href="/Podatki/PostajaLive/3" class="btn btn-success">Greda 3</a>
+    </div>
+
+    <div id="live">
+        @Html.Partial("_podatki", Model, new ViewDataDictionary { { "id", ViewData["id"] } })
+    </div>
+</div>
+
+<script>
+    $(function () {
+        setInterval(function () { $('#live').load('/Podatki/_PostajaLive/@ViewData["id"]') }, 10000);
+    });
+
+    $(document).ready(function () {
+        $('#@ViewData["id"]').addClass("focus");
+    });
+</script>

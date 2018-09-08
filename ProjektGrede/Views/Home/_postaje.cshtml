@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ProjektGrede.Models.PodatkiSenzorjev>
+
+@{
+    Layout = null;
+}
+
+<div class="container text-center" style="padding-top:20px">
+    <div class="row row-eq-height">
+        <div class="card mb-3 col-md-4" style="background-color:wheat;margin:5px 5px 15px 5px">
+            <h3 class="card-header">GREDA 1</h3>
+            <img style="height: 200px; width: 100%; display: block;" alt="Bilje" src="~/Slike/zelenjava1.png" />
+            <div class="card-body">
+                <p class="card-text">Zajeti podatki</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Datum: @Html.DisplayFor(modelItem => Model.ElementAt(0).Cas)</li>
+                <li class="list-group-item">Temp. ozračja  : @Html.DisplayFor(modelItem => Model.ElementAt(0).Temp1)°C</li>
+                <li class="list-group-item">Temp. zemlje   : @Html.DisplayFor(modelItem => Model.ElementAt(0).Temp2)°C</li>
+                <li class="list-group-item">Temp. biomase  : @Html.DisplayFor(modelItem => Model.ElementAt(0).Temp3)°C</li>
+                <li class="list-group-item">Vlažnost zemlje: @Html.DisplayFor(modelItem => Model.ElementAt(0).Vlaga)</li>
+            </ul>
+            <div class="card-body">
+                <a class="card-link" href="/Podatki/PostajaLive/1">V ŽIVO</a>
+            </div>
+            <div class="card-footer text-muted">
+                Trenutni podatki na gredi 1
+            </div>
+        </div>
+        <div class="card mb-3 col-md-4" style="background-color:wheat;margin:5px 5px 15px 5px">
+            <h3 class="card-header">GREDA 2</h3>
+            <img style="height: 200px; width: 100%; display: block;" alt="Bilje" src="~/Slike/zelenjava2.png" />
+            <div class="card-body">
+                <p class="card-text">Zajeti podatki</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Datum: @Html.DisplayFor(modelItem => Model.ElementAt(1).Cas)</li>
+                <li class="list-group-item">Temp. ozračja  : @Html.DisplayFor(modelItem => Model.ElementAt(1).Temp1)°C</li>
+                <li class="list-group-item">Temp. zemlje   : @Html.DisplayFor(modelItem => Model.ElementAt(1).Temp2)°C</li>
+                <li class="list-group-item">Temp. biomase  : @Html.DisplayFor(modelItem => Model.ElementAt(1).Temp3)°C</li>
+                <li class="list-group-item">Vlažnost zemlje: @Html.DisplayFor(modelItem => Model.ElementAt(1).Vlaga)</li>
+            </ul>
+            <div class="card-body">
+                <a class="card-link" href="/Podatki/PostajaLive/2">V ŽIVO</a>
+            </div>
+            <div class="card-footer text-muted">
+                Trenutni podatki na gredi 2
+            </div>
+        </div>
+        <div class="card mb-3 col-md-4" style="background-color:wheat;margin:5px 5px 15px 5px">
+            <h3 class="card-header">GREDA 3</h3>
+            <img style="height: 200px; width: 100%; display: block;" alt="Bilje" src="~/Slike/zelenjava3.png" />
+            <div class="card-body">
+                <p class="card-text">Zajeti podatki</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Datum: @Html.DisplayFor(modelItem => Model.ElementAt(2).Cas)</li>
+                <li class="list-group-item">Temp. ozračja  : @Html.DisplayFor(modelItem => Model.ElementAt(2).Temp1)°C</li>
+                <li class="list-group-item">Temp. zemlje   : @Html.DisplayFor(modelItem => Model.ElementAt(2).Temp2)°C</li>
+                <li class="list-group-item">Temp. biomase  : @Html.DisplayFor(modelItem => Model.ElementAt(2).Temp3)°C</li>
+                <li class="list-group-item">Vlažnost zemlje: @Html.DisplayFor(modelItem => Model.ElementAt(2).Vlaga)</li>
+            </ul>
+            <div class="card-body">
+                <a class="card-link" href="/Podatki/PostajaLive/3">V ŽIVO</a>
+            </div>
+            <div class="card-footer text-muted">
+                Trenutni podatki na gredi 3
+            </div>
+        </div>
+    </div>
+    </div>

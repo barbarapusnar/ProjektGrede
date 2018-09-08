@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ProjektGrede.Models.PodatkiSenzorjev>
+
+@{
+    ViewBag.Title = "Podatki";
+}
+
+@using X.PagedList.Mvc;
+@using X.PagedList;
+
+
+<div class="container">
+
+    <h2 id="podatki">Podatki</h2>
+
+    <div>
+        @Html.PagedListPager((IPagedList)ViewBag.OnePageOfData, page => Url.Action("Index", new { page }))
+    </div>
+
+    <table class="table table-hover" style="background-color:rgba(255, 255, 255, 0.60);border:2px solid black;border-radius:4px;">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdGrede)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Temp1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Temp2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Temp3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vlaga)
+            </th>
+        </tr>
+
+        @foreach (var item in ViewBag.OnePageOfData)
+        {
+        <tr>
+            <td>
+                @item.IdGrede
+            </td>
+            <td>
+                @item.Cas
+            </td>
+            <td>
+                @item.Temp1°C
+            </td>
+            <td>
+                @item.Temp2°C
+            </td>
+            <td>
+                @item.Temp3°C
+            </td>
+            <td>
+                @item.Vlaga %
+            </td>
+        </tr>
+        }
+
+    </table>
+
+</div>
