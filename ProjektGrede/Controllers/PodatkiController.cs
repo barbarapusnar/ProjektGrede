@@ -65,13 +65,13 @@ namespace ProjektGrede.Controllers
                         where x.IdGrede == stevilka
                         orderby x.Id descending
                         select x).Take(100);
-
+            //podatki za eno uro prvih 15 minut od ure
             var dataDan = (from x in db.PodatkiSenzorjev
                            where x.IdGrede == stevilka
-                           where x.Cas.Minute == 0
+                           where x.Cas.Minute<15
                            orderby x.Id descending
-                           select new { x.Cas, x.Temp1, x.Vlaga, x.Temp2 }).Take(25);
-
+                           select new { x.Cas, x.Temp1, x.Temp2,x.Temp3,x.Vlaga }).Take(25);
+            //za vsak teden povprečne temperature na dan
             var dataTeden = (from x in db.PodatkiSenzorjev
                              where x.IdGrede == stevilka
                              orderby x.Id descending
@@ -79,9 +79,9 @@ namespace ProjektGrede.Controllers
                              select new
                              {
                                  datum = g.Key,
-                                 tempMax = g.Max(z => z.Temp1),
-                                 tempMin = g.Min(z => z.Temp2),
-                                 padSUM = g.Sum(z => z.Temp3),
+                                 temp1Avg = g.Average(z => z.Temp1),
+                                 temp2Avg = g.Average(z => z.Temp2),
+                                 temp3Avg = g.Average(z => z.Temp3),
                                  vlagaAVG = g.Average(z => z.Vlaga)
                              }).Take(7);
 
@@ -92,9 +92,9 @@ namespace ProjektGrede.Controllers
                              select new
                              {
                                  datum = g.Key,
-                                 tempMax = g.Max(z => z.Temp1),
-                                 tempMin = g.Min(z => z.Temp2),
-                                 padSUM = g.Sum(z => z.Temp3),
+                                 temp1Avg = g.Average(z => z.Temp1),
+                                 temp2Avg = g.Average(z => z.Temp2),
+                                 temp3Avg = g.Average(z => z.Temp3),
                                  vlagaAVG = g.Average(z => z.Vlaga)
                              }).Take(30);
 

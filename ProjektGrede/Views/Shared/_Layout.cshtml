@@ -4,14 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Projekt Grede</title>
+
+    @Styles.Render("~/Content/css")   
+    <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/moment.js"></script>
     <script src="~/Scripts/Chart.js"></script>
-    @Styles.Render("~/Content/css")
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+    
 </head>
 <body style="height:100%;">
     <div class="container-fluid">
@@ -34,13 +36,30 @@
             <div class="collapse navbar-collapse" id="my-navigation">
                 <ul class="nav navbar-nav" role="menu">
                     <li> <a href="/Home"><span class="glyphicon glyphicon-home"></span><span>&nbsp;Začetek</span></a></li>
-                    <li><a class="podatki" href="/Podatki"><span class="glyphicon glyphicon-dashboard"></span><span>&nbsp;Vsi Podatki</span></a></li>
+                    @*<li>
+                        <a class="podatki" href="/Podatki"><span class="glyphicon glyphicon-dashboard"></span><span>&nbsp;Vsi Podatki</span></a>
+                    </li>*@
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" aria-expanded="false" aria-haspopup="true" href="#" data-toggle="dropdown">Po gredah<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/Podatki/Postaja/1">Greda 1</a></li>
+                            <li><a class="dropdown-item" href="/Podatki/Postaja/2">Greda 2</a></li>
+                            <li><a class="dropdown-item" href="/Podatki/Postaja/3">Greda 3</a></li>
+                        </ul>                       
+                    </li>
                     <li><a href="/Podatki/PostajaLive"><span class="glyphicon glyphicon-time"></span>&nbsp;Zadnji podatki</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-globe"></span><span>&nbsp;Projekt grede</span></a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    @*<div class="sidenav" id="stranska">
+            <div id="sipostaje" class="collapse" style="margin-left:25px;">
+                <a href="/Podatki/Postaja/1">Greda 1</a>
+                <a href="/Podatki/Postaja/2">Greda 2</a>
+                <a href="/Podatki/Postaja/3">Greda 3</a>
+            </div>
+        </div>*@
     <div id="main" class="container-fluid body-content main">
         <div id="divinmain" style="flex: 1 0 auto;">
             @RenderBody()

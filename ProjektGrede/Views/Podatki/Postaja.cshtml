@@ -7,9 +7,9 @@
 <div class="container">
     <h2 id="podatki">Postaja @ViewData["id"]</h2>
     <div class="btn-group" id="obdobje">
-        <a href="#" id="danbtn" class="btn btn-default btnmoj focus" onclick="danChart()">Dan</a>
-        <a href="#" id="tedenbtn" class="btn btnmoj" onclick="tedenChart()">Teden</a>
-        <a href="#" id="mesecbtn" class="btn btnmoj" onclick="mesecChart()">Mesec</a>
+        <a href="#" id="danbtn" class="btn btn-success" onclick="danChart()">Dan</a>
+        <a href="#" id="tedenbtn" class="btn btn-success" onclick="tedenChart()">Teden</a>
+        <a href="#" id="mesecbtn" class="btn btn-success" onclick="mesecChart()">Mesec</a>
     </div>
 
     <div id="chart-container" style="border:2px solid black;border-radius:4px;background-color:rgba(255, 255, 255, 0.60);position:relative;width:100%;height:400px;min-width:300px;margin-top:20px;">
@@ -77,9 +77,15 @@
 
     var podatki = @Html.Raw(Json.Encode(ViewData["Dan"]));
 
-    var temp = podatki.map(function (item) {
-        return item.Temp
-    });
+    var temp1 = podatki.map(function (item) {
+        return item.Temp1
+        });
+        var temp2 = podatki.map(function (item) {
+            return item.Temp2
+        });
+        var temp3 = podatki.map(function (item) {
+            return item.Temp3
+        });
     var datumi = podatki.map(function (item) {
         var x = item.Cas.toString();
         var konc = x.substr(6, 13);
@@ -106,11 +112,33 @@
                 datasets: [
                     {
                         type: 'line',
-                        label: "Temperatura",
+                        label: "Temp. ozračja",
+                        backgroundColor: 'green',
+                        borderColor: 'green',
+                        borderWidth: 2,
+                        data: temp1,
+                        fill: false,
+                        yAxisID: 'yaxis2',
+                        cubicInterpolationMode: 'monotone'
+                    },
+                    {
+                        type: 'line',
+                        label: "Temp. zemlje",
+                        backgroundColor: 'brown',
+                        borderColor: 'brown',
+                        borderWidth: 2,
+                        data: temp2,
+                        fill: false,
+                        yAxisID: 'yaxis2',
+                        cubicInterpolationMode: 'monotone'
+                    },
+                    {
+                        type: 'line',
+                        label: "Temp. biomase",
                         backgroundColor: 'orangered',
                         borderColor: 'orangered',
                         borderWidth: 2,
-                        data: temp,
+                        data: temp3,
                         fill: false,
                         yAxisID: 'yaxis2',
                         cubicInterpolationMode: 'monotone'
@@ -218,12 +246,15 @@
 
     var podatki = @Html.Raw(Json.Encode(ViewData["Teden"]));
 
-    var tempMax = podatki.map(function (item) {
-        return item.tempMax
-    });
-    var tempMin = podatki.map(function (item) {
-        return item.tempMin
-    });
+    var temp1Avg = podatki.map(function (item) {
+        return item.temp1Avg
+        });
+        var temp2Avg = podatki.map(function (item) {
+            return item.temp2Avg
+        });
+        var temp3Avg = podatki.map(function (item) {
+            return item.temp3Avg
+        });
     var datumi = podatki.map(function (item) {
         var x = item.datum.toString();
         var konc = x.substr(6, 13);
@@ -232,11 +263,6 @@
         var dateString = date.toLocaleString('de-DE', options);
         return dateString;
     });
-
-    //var padavine = podatkip.map(function (item) {
-    //    return item.Padavine
-    //});
-
     var vlaga = podatki.map(function (item) {
         return item.vlagaAVG
     });
@@ -251,22 +277,33 @@
                 datasets: [
                     {
                         type: 'line',
-                        label: "Temperatura MAX",
-                        backgroundColor: 'orangered',
-                        borderColor: 'orangered',
+                        label: "Temp. ozračja",
+                        backgroundColor: 'green',
+                        borderColor: 'green',
                         borderWidth: 2,
-                        data: tempMax,
+                        data: temp1Avg,
                         fill: false,
                         yAxisID: 'yaxis2',
                         cubicInterpolationMode: 'monotone'
                     },
                     {
                         type: 'line',
-                        label: "Temperatura MIN",
-                        backgroundColor: '#08349F',
-                        borderColor: '#08349F',
+                        label: "Temp. zemlje",
+                        backgroundColor: 'brown',
+                        borderColor: 'brown',
                         borderWidth: 2,
-                        data: tempMin,
+                        data: temp2Avg,
+                        fill: false,
+                        yAxisID: 'yaxis2',
+                        cubicInterpolationMode: 'monotone'
+                    },
+                    {
+                        type: 'line',
+                        label: "Temp. biomase",
+                        backgroundColor: 'orangered',
+                        borderColor: 'orangered',
+                        borderWidth: 2,
+                        data: temp3Avg,
                         fill: false,
                         yAxisID: 'yaxis2',
                         cubicInterpolationMode: 'monotone'
@@ -349,7 +386,7 @@
                 },
                 title: {
                     display: true,
-                    text: 'Temperatura in vlaga zadnjih 7 dni',
+                    text: 'Povprečna temperatura in vlaga zadnjih 7 dni',
                     fontSize: 16
                 },
                 showXLabels: 10
@@ -367,12 +404,15 @@
 
     var podatki = @Html.Raw(Json.Encode(ViewData["Mesec"]));
 
-    var tempMax = podatki.map(function (item) {
-        return item.tempMax
-    });
-    var tempMin = podatki.map(function (item) {
-        return item.tempMin
-    });
+        var temp1Avg = podatki.map(function (item) {
+            return item.temp1Avg
+        });
+        var temp2Avg = podatki.map(function (item) {
+            return item.temp2Avg
+        });
+        var temp3Avg = podatki.map(function (item) {
+            return item.temp3Avg
+        });
     var datumi = podatki.map(function (item) {
         var x = item.datum.toString();
         var konc = x.substr(6, 13);
@@ -382,9 +422,6 @@
         return dateString;
     });
 
-    //var padavine = podatkip.map(function (item) {
-    //    return item.Padavine
-    //});
 
     var vlaga = podatki.map(function (item) {
         return item.vlagaAVG
@@ -399,22 +436,33 @@
                 datasets: [
                     {
                         type: 'line',
-                        label: "Temperatura MAX",
-                        backgroundColor: 'orangered',
-                        borderColor: 'orangered',
+                        label: "Temp. ozračja",
+                        backgroundColor: 'green',
+                        borderColor: 'green',
                         borderWidth: 2,
-                        data: tempMax,
+                        data: temp1Avg,
                         fill: false,
                         yAxisID: 'yaxis2',
                         cubicInterpolationMode: 'monotone'
                     },
                     {
                         type: 'line',
-                        label: "Temperatura MIN",
-                        backgroundColor: '#08349F',
-                        borderColor: '#08349F',
+                        label: "Temp. zemlje",
+                        backgroundColor: 'brown',
+                        borderColor: 'brown',
                         borderWidth: 2,
-                        data: tempMin,
+                        data: temp2Avg,
+                        fill: false,
+                        yAxisID: 'yaxis2',
+                        cubicInterpolationMode: 'monotone'
+                    },
+                    {
+                        type: 'line',
+                        label: "Temp. biomase",
+                        backgroundColor: 'orangered',
+                        borderColor: 'orangered',
+                        borderWidth: 2,
+                        data: temp3Avg,
                         fill: false,
                         yAxisID: 'yaxis2',
                         cubicInterpolationMode: 'monotone'
