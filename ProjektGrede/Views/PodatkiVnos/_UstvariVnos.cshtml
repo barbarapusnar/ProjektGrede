@@ -1,0 +1,32 @@
+﻿
+@model ProjektGrede.Models.PodatkiVnos
+
+
+@*<div id="partial">*@
+    @using (Html.BeginForm("Create", "PodatkiVnos", FormMethod.Post, new { @class = "form-inline" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @*<div class="form-inline">*@
+<div>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.IDGrede)
+    @Html.HiddenFor(model => model.DatumVnosa)
+    <label class="control-label">Novo stanje</label>
+    <div class="input-group mb-3 ">
+        @{ Model.NovoStanje = 0;}
+        @Html.EditorFor(model => model.NovoStanje, new { htmlAttributes = new { @class = "input-group mb-3", placeholder = "Stanje števca", type = "text" } })
+        @Html.ValidationMessageFor(model => model.NovoStanje)
+    </div>
+    <hr />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Vnesi" class="btn-success" id="ustvariBtn" />
+        </div>
+    </div>
+</div>
+    }
+
+

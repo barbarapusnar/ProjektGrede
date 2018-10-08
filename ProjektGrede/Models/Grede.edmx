@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GredeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GredeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="PodatkiSenzorjev">
           <Key>
             <PropertyRef Name="Id" />
@@ -17,11 +17,20 @@
           <Property Name="Temp3" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Vlaga" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
+        <EntityType Name="PodatkiVnos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDGrede" Type="int" Nullable="false" />
+          <Property Name="NovoStanje" Type="int" Nullable="false" />
+          <Property Name="DatumVnosa" Type="datetime" />
+        </EntityType>
         <EntityContainer Name="GredeModelStoreContainer">
           <EntitySet Name="PodatkiSenzorjev" EntityType="Self.PodatkiSenzorjev" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PodatkiVnos" EntityType="Self.PodatkiVnos" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GredeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -39,7 +48,17 @@
         </EntityType>
         <EntityContainer Name="GredeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="PodatkiSenzorjev" EntityType="Self.PodatkiSenzorjev" />
+          <EntitySet Name="PodatkiVnos" EntityType="GredeModel.PodatkiVnos" />
         </EntityContainer>
+        <EntityType Name="PodatkiVnos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDGrede" Type="Int32" Nullable="false" />
+          <Property Name="NovoStanje" Type="Int32" Nullable="false" />
+          <Property Name="DatumVnosa" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -56,6 +75,16 @@
                 <ScalarProperty Name="Temp2" ColumnName="Temp2" />
                 <ScalarProperty Name="Temp3" ColumnName="Temp3" />
                 <ScalarProperty Name="Vlaga" ColumnName="Vlaga" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PodatkiVnos">
+            <EntityTypeMapping TypeName="GredeModel.PodatkiVnos">
+              <MappingFragment StoreEntitySet="PodatkiVnos">
+                <ScalarProperty Name="DatumVnosa" ColumnName="DatumVnosa" />
+                <ScalarProperty Name="NovoStanje" ColumnName="NovoStanje" />
+                <ScalarProperty Name="IDGrede" ColumnName="IDGrede" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

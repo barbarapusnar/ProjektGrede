@@ -53,7 +53,7 @@ namespace ProjektGrede.Controllers
 
             ViewData["TempAvg"] = tpovp;
             ViewData["VlagaAvg"] = vlpovp;
-
+           
             return View(dataTable);
         }
 

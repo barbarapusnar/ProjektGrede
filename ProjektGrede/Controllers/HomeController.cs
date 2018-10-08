@@ -28,6 +28,7 @@ namespace ProjektGrede.Controllers
             ViewData["vlaga"] = podatki.Humidity2/10;
             ViewData["padavine"] = podatki.Precipitation;
             ViewData["omocenost"] = podatki.Leafwetness2;
+           
             var data = from element in ge.PodatkiSenzorjev
                        group element by element.IdGrede
                        into groups
