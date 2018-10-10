@@ -71,7 +71,9 @@ namespace ProjektGrede.Controllers
                            where x.Cas.Minute<15
                            orderby x.Id descending
                            select new { x.Cas, x.Temp1, x.Temp2,x.Temp3,x.Vlaga }).Take(25);
+            dataDan = dataDan.OrderBy(x => x.Cas);
             //za vsak teden povprečne temperature na dan
+          
             var dataTeden = (from x in db.PodatkiSenzorjev
                              where x.IdGrede == stevilka
                              orderby x.Id descending
@@ -83,8 +85,11 @@ namespace ProjektGrede.Controllers
                                  temp2Avg = g.Average(z => z.Temp2),
                                  temp3Avg = g.Average(z => z.Temp3),
                                  vlagaAVG = g.Average(z => z.Vlaga)
-                             }).Take(7);
-
+                             });
+            dataTeden = (from x in dataTeden
+                         orderby x.datum descending
+                         select x).Take(7);
+            dataTeden = dataTeden.OrderBy(a => a.datum);
             var dataMesec = (from x in db.PodatkiSenzorjev
                              where x.IdGrede == stevilka
                              orderby x.Id descending
@@ -96,8 +101,11 @@ namespace ProjektGrede.Controllers
                                  temp2Avg = g.Average(z => z.Temp2),
                                  temp3Avg = g.Average(z => z.Temp3),
                                  vlagaAVG = g.Average(z => z.Vlaga)
-                             }).Take(30);
-
+                             });
+            dataMesec = (from x in dataMesec
+                         orderby x.datum descending
+                         select x).Take(30);
+            dataMesec = dataMesec.OrderBy(a => a.datum);
             ViewData["Dan"] = dataDan;
             ViewData["Teden"] = dataTeden;
             ViewData["Mesec"] = dataMesec;
