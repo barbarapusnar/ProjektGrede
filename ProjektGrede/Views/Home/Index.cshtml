@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjektGrede.Models.PodatkiSenzorjev>
+﻿@model IEnumerable<ProjektGrede.Models.VsiPodatki>
 
 @{
     ViewBag.Title = "Start";
@@ -11,15 +11,19 @@
     </div>
     <div class="row">
         <div class="card text-white  mb-3 col-md-push-1 col-md-3" style="max-width:300px;background-color:wheat;margin:5px 5px 5px 5px">
-            <div class="card-header">Agro meteorološki podatki</div>
+            <h3 class="card-header">POSTAJA BILJE</h3>
+            <img style="height: 200px; width: 100%; display: block;" alt="Bilje" src="~/Slike/Bilje.jpg" />
             <div class="card-body">
-                <h4 class="card-title">Bilje</h4>
+                <div class="card-body">
+                    <p class="card-text">Agro meteorološki podatki</p>
+                </div>
                 <p class="card-text">
                     <ul class="list-group" style="background-color:transparent">
                         <li class="list-group-item">Datum: @ViewData["datum"]</li>
                         <li class="list-group-item">Temperatura: @ViewData["temp"]°C</li>
                         <li class="list-group-item">Vlaga: @ViewData["vlaga"]%</li>
-                        <li class="list-group-item">Omočenost lista: @ViewData["omocenost"]</li>
+                        <li class="list-group-item">Padavine: @ViewData["padavine"]mm</li>
+                        <li class="list-group-item">Trajanje omočenosti lista: @ViewData["omocenost"]</li>
                     </ul>
                 </p>
             </div>

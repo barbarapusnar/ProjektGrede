@@ -1,0 +1,184 @@
+﻿@model IEnumerable<ProjektGrede.Models.OdvisnostiViewModel>
+
+@{
+    Layout = null;
+}
+<div>
+    <div id="chart-dan" style="border:2px solid black;border-radius:4px;background-color:rgba(255, 255, 255, 0.60);position:relative;width:100%;height:400px;min-width:300px;margin-top:20px;">
+        <canvas id="bar-chart-dan"></canvas>
+    </div>
+</div>
+<script>
+    var podatki = @Html.Raw(Json.Encode(Model));
+    //var p = podatki.map(function (item) {
+    //    return item.koo
+    //});
+    var p1 = [];
+    var p2 = [];
+    var p3 = [];
+    for (var i = 0, max = podatki.length; i < max; i += 1) {
+        if (podatki[i].IdGrede===1)
+            p1.push(podatki[i].koo);
+        if (podatki[i].IdGrede === 2)
+            p2.push(podatki[i].koo);
+        if (podatki[i].IdGrede === 3)
+            p3.push(podatki[i].koo);
+    }
+    new Chart(document.getElementById("bar-chart-dan"), {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: 'Scatter Dataset',
+                data: p1,
+                backgroundColor: 'orangered',
+                borderColor: 'orangered'
+            },
+                {
+                    label: 'Scatter Dataset',
+                    data: p2,
+                    backgroundColor: 'green',
+                    borderColor: 'green'
+                },
+                {
+                    label: 'Scatter Dataset',
+                    data: p3,
+                    backgroundColor: 'blue',
+                    borderColor: 'blue'
+                },
+            ]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    type: 'linear',
+                    position: 'bottom'
+                }]
+            }
+        }
+    });
+    //var p = podatki.map(function (item) { return x=item.Padavine,y=item.Vlaga })
+    //var temp1 = podatki.map(function (item) {
+    //    return item.Temp1
+    //});
+    //var temp2 = podatki.map(function (item) {
+    //    return item.Temp2
+    //});
+    //var temp3 = podatki.map(function (item) {
+    //    return item.Temp3
+    //});
+    //var datumi = podatki.map(function (item) {
+    //    var x = item.Cas.toString();
+    //    var konc = x.substr(6, 13);
+    //    var date = new Date(parseInt(konc));
+    //    var options = { hour: 'numeric', minute: 'numeric' }
+    //    var dateString = date.toLocaleString('de-DE', options);
+    //    return dateString;
+    //});
+
+    ////var padavine = podatki.map(function (item) {
+    ////    return item.Padavine
+    ////});
+
+    //var vlaga = podatki.map(function (item) {
+    //    return item.Vlaga
+    //});
+    //new Chart(document.getElementById("bar-chart-dan"), {
+    //    type: 'scatter',
+    //    data: {
+    //        datasets: [{
+    //            label: 'Scatter Dataset',
+    //            data: [{
+    //                x: -10,
+    //                y: 0
+    //            }, {
+    //                x: 0,
+    //                y: 10
+    //            }, {
+    //                x: 10,
+    //                y: 5
+    //            }]
+    //        }]
+    //    },
+    //    options: {
+    //        scales: {
+    //            xAxes: [{
+    //                type: 'linear',
+    //                position: 'bottom'
+    //            }]
+    //        }
+    //    }
+    //});
+    ////new Chart(document.getElementById("bar-chart-dan"), {
+    ////    type: 'scatter',
+    ////    data: {
+    ////        labels:  datumi,
+    ////        datasets: [{
+    ////            label: 'Scatter Dataset',
+    ////            data:
+    ////                //p
+    ////                [{
+    ////                x: -10,
+    ////                y: 0
+    ////            }, {
+    ////                x: 0,
+    ////                y: 10
+    ////            }, {
+    ////                x: 10,
+    ////                y: 5
+    ////            }]
+    ////        }]
+    ////    },
+
+    ////    options: {
+            
+    ////        maintainAspectRatio: false,
+    ////        scales: {
+    ////            xAxes: [{
+    ////                barPercentage: 0.8,
+    ////                categoryPercentage: 1,
+    ////                scaleLabel: {
+    ////                    display: true,
+    ////                    labelString: 'Voda na m2',
+    ////                    fontSize: 11
+    ////                },
+    ////            }],
+    ////            yAxes: [{
+    ////                display: true,
+    ////                scaleLabel: {
+    ////                    display: true,
+    ////                    labelString: 'Vlaga',
+    ////                    fontSize: 11
+    ////                },
+    ////                barPercentage: 0.85,
+    ////                categoryPercentage: 1,
+    ////                type: 'linear',
+    ////                id: 'yaxis1',
+    ////                display: true,
+    ////                position: 'right',
+    ////                ticks: {
+    ////                    max: 100,
+    ////                    beginAtZero: true,
+    ////                    callback: function (value, index, values) {
+    ////                        return value + '%';
+    ////                    }
+    ////                },
+    ////            },
+    ////                    gridLines: {
+    ////                        drawOnChartArea: false,
+    ////                    }
+    ////                }]
+    ////        },
+    ////        legend: { display: true },
+    ////        tooltips: {
+    ////            mode: 'index',
+    ////            intersect: false
+    ////        },
+    ////        title: {
+    ////            display: true,
+    ////            text: 'Povezava med vodo na m2 in vlago',
+    ////            fontSize: 16
+    ////        },
+    ////        showXLabels: 10
+    ////    }
+    ////});
+</script>

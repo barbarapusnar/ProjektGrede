@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjektGrede.Models.PodatkiSenzorjev>
+﻿@model IEnumerable<ProjektGrede.Models.VsiPodatki>
 
 @{
     Layout = null;
@@ -8,16 +8,20 @@
     <div class="row row-eq-height">
         <div class="card mb-3 col-md-4" style="background-color:wheat;margin:5px 5px 15px 5px">
             <h3 class="card-header">GREDA 1</h3>
-            <img style="height: 200px; width: 100%; display: block;" alt="Bilje" src="~/Slike/zelenjava1.png" />
+            <img style="height: 200px; width: 100%; display: block;" alt="Bilje" src="~/Slike/WP_20181012_003.jpg" />
             <div class="card-body">
                 <p class="card-text">Zajeti podatki</p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Datum: @Html.DisplayFor(modelItem => Model.ElementAt(0).Cas)</li>
-                <li class="list-group-item">Temp. ozračja  : @Html.DisplayFor(modelItem => Model.ElementAt(0).Temp1)°C</li>
-                <li class="list-group-item">Temp. zemlje   : @Html.DisplayFor(modelItem => Model.ElementAt(0).Temp2)°C</li>
-                <li class="list-group-item">Temp. biomase  : @Html.DisplayFor(modelItem => Model.ElementAt(0).Temp3)°C</li>
-                <li class="list-group-item">Vlažnost zemlje: @Html.DisplayFor(modelItem => Model.ElementAt(0).Vlaga)%</li>
+                <li class="list-group-item">Temp. ozračja   : @Html.DisplayFor(modelItem => Model.ElementAt(0).Temp1)°C</li>
+                <li class="list-group-item">Temp. zemlje    : @Html.DisplayFor(modelItem => Model.ElementAt(0).Temp2)°C</li>
+                <li class="list-group-item">Temp. biomase   : @Html.DisplayFor(modelItem => Model.ElementAt(0).Temp3)°C</li>
+                <li class="list-group-item">Vlažnost zemlje : @Html.DisplayFor(modelItem => Model.ElementAt(0).Vlaga)%</li>
+                <li class="list-group-item">Zadnje zalivanje: @Html.DisplayFor(modelItem => Model.ElementAt(0).DatumVnosa)</li>
+                <li class="list-group-item">Količina zalivanja na dan: @Html.DisplayFor(modelItem => Model.ElementAt(0).ZalivanjeNam2) l/m<sup>2</sup></li>
+                <li class="list-group-item">Kol. pad. od zadnjega zalivanja na dan : @Html.DisplayFor(modelItem => Model.ElementAt(0).KoličinaPadavin) l/m<sup>2</sup></li>
+                <li class="list-group-item">Skupaj pad. in zalivanje  na dan : @Html.DisplayFor(modelItem => Model.ElementAt(0).SkupajVoda) l/m<sup>2</sup></li>
             </ul>
             <div class="card-body">
                 <a class="card-link" href="/Podatki/PostajaLive/1">V ŽIVO</a>
@@ -28,7 +32,7 @@
         </div>
         <div class="card mb-3 col-md-4" style="background-color:wheat;margin:5px 5px 15px 5px">
             <h3 class="card-header">GREDA 2</h3>
-            <img style="height: 200px; width: 100%; display: block;" alt="Bilje" src="~/Slike/zelenjava2.png" />
+            <img style="height: 200px; width: 100%; display: block;" alt="Bilje" src="~/Slike/WP_20181012_002.jpg" />
             <div class="card-body">
                 <p class="card-text">Zajeti podatki</p>
             </div>
@@ -38,6 +42,10 @@
                 <li class="list-group-item">Temp. zemlje   : @Html.DisplayFor(modelItem => Model.ElementAt(1).Temp2)°C</li>
                 <li class="list-group-item">Temp. biomase  : @Html.DisplayFor(modelItem => Model.ElementAt(1).Temp3)°C</li>
                 <li class="list-group-item">Vlažnost zemlje: @Html.DisplayFor(modelItem => Model.ElementAt(1).Vlaga)%</li>
+                <li class="list-group-item">Zadnje zalivanje: @Html.DisplayFor(modelItem => Model.ElementAt(1).DatumVnosa)</li>
+                <li class="list-group-item">Količina zalivanja na dan: @Html.DisplayFor(modelItem => Model.ElementAt(1).ZalivanjeNam2) l/m<sup>2</sup></li>
+                <li class="list-group-item">Kol. pad. od zadnjega zalivanja na dan : @Html.DisplayFor(modelItem => Model.ElementAt(1).KoličinaPadavin) l/m<sup>2</sup></li>
+                <li class="list-group-item">Skupaj pad. in zalivanje  na dan : @Html.DisplayFor(modelItem => Model.ElementAt(1).SkupajVoda) l/m<sup>2</sup></li>
             </ul>
             <div class="card-body">
                 <a class="card-link" href="/Podatki/PostajaLive/2">V ŽIVO</a>
@@ -48,7 +56,7 @@
         </div>
         <div class="card mb-3 col-md-4" style="background-color:wheat;margin:5px 5px 15px 5px">
             <h3 class="card-header">GREDA 3</h3>
-            <img style="height: 200px; width: 100%; display: block;" alt="Bilje" src="~/Slike/zelenjava3.png" />
+            <img style="height: 200px; width: 100%; display: block;" alt="Bilje" src="~/Slike/WP_20181012_007.jpg" />
             <div class="card-body">
                 <p class="card-text">Zajeti podatki</p>
             </div>
@@ -58,6 +66,10 @@
                 <li class="list-group-item">Temp. zemlje   : @Html.DisplayFor(modelItem => Model.ElementAt(2).Temp2)°C</li>
                 <li class="list-group-item">Temp. biomase  : @Html.DisplayFor(modelItem => Model.ElementAt(2).Temp3)°C</li>
                 <li class="list-group-item">Vlažnost zemlje: @Html.DisplayFor(modelItem => Model.ElementAt(2).Vlaga)%</li>
+                <li class="list-group-item">Zadnje zalivanje: @Html.DisplayFor(modelItem => Model.ElementAt(2).DatumVnosa)</li>
+                <li class="list-group-item">Količina zalivanja na dan: @Html.DisplayFor(modelItem => Model.ElementAt(2).ZalivanjeNam2) l/m<sup>2</sup></li>
+                <li class="list-group-item">Kol. pad. od zadnjega zalivanja na dan : @Html.DisplayFor(modelItem => Model.ElementAt(2).KoličinaPadavin) l/m<sup>2</sup></li>
+                <li class="list-group-item">Skupaj pad. in zalivanje  na dan : @Html.DisplayFor(modelItem => Model.ElementAt(2).SkupajVoda) l/m<sup>2</sup></li>
             </ul>
             <div class="card-body">
                 <a class="card-link" href="/Podatki/PostajaLive/3">V ŽIVO</a>

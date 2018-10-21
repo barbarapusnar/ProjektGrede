@@ -2,10 +2,22 @@
 
 
 @{
-    ViewBag.Title = "Postaja " + ViewData["id"];
+    ViewBag.Title = "Greda " + ViewData["id"];
 }
 <div class="container">
-    <h2 id="podatki">Postaja @ViewData["id"]</h2>
+    <h2 id="podatki">Greda @ViewData["id"]</h2>
+    @if (@ViewData["id"].ToString() == "1")
+    {
+        <img style="height: 200px; margin:4px 7px 10px 4px; display: block;" alt="Bilje" src="~/Slike/WP_20181012_003.jpg" />
+    }
+    @if (@ViewData["id"].ToString() == "2")
+    {
+        <img style="height: 200px; margin:4px 7px 10px 4px; display: block;" alt="Bilje" src="~/Slike/WP_20181012_002.jpg" />
+    }
+    @if (@ViewData["id"].ToString() == "3")
+    {
+        <img style="height: 200px; margin:4px 7px 10px 4px; display: block;" alt="Bilje" src="~/Slike/WP_20181012_007.jpg" />
+    }
     <div class="btn-group" id="obdobje">
         <a href="#" id="danbtn" class="btn btn-success" onclick="danChart()">Dan</a>
         <a href="#" id="tedenbtn" class="btn btn-success" onclick="tedenChart()">Teden</a>
@@ -17,47 +29,47 @@
     </div>
 
     @*<table class="table table-hover" style="background-color:rgba(255, 255, 255, 0.60);border:2px solid black;border-radius:4px;margin-top:20px;">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Cas)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Temp1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Temp2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Temp3)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vlaga)
-            </th>
-            
-        </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Temp1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Temp2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Temp3)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vlaga)
+                </th>
 
-        @foreach (var item in Model)
-        {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Temp1)°C
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Temp2)°C
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Temp3)°C
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Vlaga)%
-            </td>
-        </tr>
-        }
+            </tr>
 
-    </table>*@
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Temp1)°C
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Temp2)°C
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Temp3)°C
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vlaga)%
+                </td>
+            </tr>
+            }
+
+        </table>*@
 </div>
 
 @*Dan*@

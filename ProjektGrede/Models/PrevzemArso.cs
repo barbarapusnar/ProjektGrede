@@ -12,13 +12,10 @@ namespace ProjektGrede.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PodatkiVnos
+    public partial class PrevzemArso
     {
         public int Id { get; set; }
-        public int IDGrede { get; set; }
-        public int NovoStanje { get; set; }
-        public System.DateTime DatumVnosa { get; set; }
-        public Nullable<System.DateTime> DatumPredZalivanje { get; set; }
-        public Nullable<int> Razlika { get; set; }
+        public Nullable<System.DateTime> Datum { get; set; }
+        public Nullable<decimal> Padavine { get; set; }
     }
 }

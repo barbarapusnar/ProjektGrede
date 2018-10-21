@@ -98,7 +98,7 @@ namespace ProjektGrede
             string ADUserName = ConfigurationManager.ConnectionStrings["ADUserName"].ConnectionString;
             string ADPassword = ConfigurationManager.ConnectionStrings["ADPassword"].ConnectionString;
 
-            PrincipalContext principalContext = new PrincipalContext(ContextType.Domain, "c-dc1.c.scng.si:636", "dc=c,dc=scng,dc=si", ContextOptions.Negotiate, "RegisNET@c.scng.si", "California43");
+            PrincipalContext principalContext = new PrincipalContext(ContextType.Domain, ADController, ADDomain, ContextOptions.Negotiate, ADUserName, ADPassword);
             bool isAuthenticated = false;
             UserPrincipal userPrincipal = null;
             try
@@ -132,13 +132,13 @@ namespace ProjektGrede
                 // revealing this information
                 return new AuthenticationResult("Račun nima dostopa do sistema Regis.NET.");
             }
-            else
-            {
-                if (!IsUserGroupMember(username, "RegisNET Group", principalContext))
-                {
-                    return new AuthenticationResult("Račun nima dostopa do sistema Regis.NET.");
-                }
-            }
+            //else
+            //{
+            //    if (!IsUserGroupMember(username, "RegisNET Group", principalContext))
+            //    {
+            //        return new AuthenticationResult("Račun nima dostopa do sistema Regis.NET.");
+            //    }
+            //}
 
 
             var identity = CreateIdentity(userPrincipal);

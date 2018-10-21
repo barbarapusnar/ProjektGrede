@@ -24,11 +24,33 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDGrede" Type="int" Nullable="false" />
           <Property Name="NovoStanje" Type="int" Nullable="false" />
-          <Property Name="DatumVnosa" Type="datetime" />
+          <Property Name="DatumVnosa" Type="datetime" Nullable="false" />
+          <Property Name="DatumPredZalivanje" Type="datetime" />
+          <Property Name="Razlika" Type="int" />
+        </EntityType>
+        <EntityType Name="PrevzemArso">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Datum" Type="datetime" />
+          <Property Name="Padavine" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="VodaVlaga">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDGrede" Type="int" />
+          <Property Name="Datum" Type="datetime" />
+          <Property Name="Padavine" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Vlaga" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityContainer Name="GredeModelStoreContainer">
           <EntitySet Name="PodatkiSenzorjev" EntityType="Self.PodatkiSenzorjev" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PodatkiVnos" EntityType="Self.PodatkiVnos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrevzemArso" EntityType="Self.PrevzemArso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VodaVlaga" EntityType="Self.VodaVlaga" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -49,6 +71,8 @@
         <EntityContainer Name="GredeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="PodatkiSenzorjev" EntityType="Self.PodatkiSenzorjev" />
           <EntitySet Name="PodatkiVnos" EntityType="GredeModel.PodatkiVnos" />
+          <EntitySet Name="PrevzemArso" EntityType="GredeModel.PrevzemArso" />
+          <EntitySet Name="VodaVlaga" EntityType="GredeModel.VodaVlaga" />
         </EntityContainer>
         <EntityType Name="PodatkiVnos">
           <Key>
@@ -57,7 +81,27 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDGrede" Type="Int32" Nullable="false" />
           <Property Name="NovoStanje" Type="Int32" Nullable="false" />
-          <Property Name="DatumVnosa" Type="DateTime" Precision="3" />
+          <Property Name="DatumVnosa" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DatumPredZalivanje" Type="DateTime" Precision="3" />
+          <Property Name="Razlika" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PrevzemArso">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Datum" Type="DateTime" Precision="3" />
+          <Property Name="Padavine" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="VodaVlaga">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDGrede" Type="Int32" />
+          <Property Name="Datum" Type="DateTime" Precision="3" />
+          <Property Name="Padavine" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Vlaga" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -81,8 +125,30 @@
           <EntitySetMapping Name="PodatkiVnos">
             <EntityTypeMapping TypeName="GredeModel.PodatkiVnos">
               <MappingFragment StoreEntitySet="PodatkiVnos">
+                <ScalarProperty Name="Razlika" ColumnName="Razlika" />
+                <ScalarProperty Name="DatumPredZalivanje" ColumnName="DatumPredZalivanje" />
                 <ScalarProperty Name="DatumVnosa" ColumnName="DatumVnosa" />
                 <ScalarProperty Name="NovoStanje" ColumnName="NovoStanje" />
+                <ScalarProperty Name="IDGrede" ColumnName="IDGrede" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrevzemArso">
+            <EntityTypeMapping TypeName="GredeModel.PrevzemArso">
+              <MappingFragment StoreEntitySet="PrevzemArso">
+                <ScalarProperty Name="Padavine" ColumnName="Padavine" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VodaVlaga">
+            <EntityTypeMapping TypeName="GredeModel.VodaVlaga">
+              <MappingFragment StoreEntitySet="VodaVlaga">
+                <ScalarProperty Name="Vlaga" ColumnName="Vlaga" />
+                <ScalarProperty Name="Padavine" ColumnName="Padavine" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
                 <ScalarProperty Name="IDGrede" ColumnName="IDGrede" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

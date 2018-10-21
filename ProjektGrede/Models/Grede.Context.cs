@@ -27,5 +27,7 @@ namespace ProjektGrede.Models
     
         public virtual DbSet<PodatkiSenzorjev> PodatkiSenzorjev { get; set; }
         public virtual DbSet<PodatkiVnos> PodatkiVnos { get; set; }
+        public virtual DbSet<PrevzemArso> PrevzemArso { get; set; }
+        public virtual DbSet<VodaVlaga> VodaVlaga { get; set; }
     }
 }

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<ProjektGrede.Models.OdvisnostiViewModel>
+
+<div class="container text-center">
+    <div class="row row-eq-height" id="vremeCont">
+        <div class="btn-group btn-group-sm">
+            <a id="1" href="/VodaVlaga/Index/1" class="btn btn-success">Greda 1</a>
+            <a id="2" href="/VodaVlaga/Index/2" class="btn btn-success">Greda 2</a>
+            <a id="3" href="/VodaVlaga/Index/3" class="btn btn-success">Greda 3</a>
+        </div>
+
+        <div id="live">
+            @Html.Partial("_odvisnosti", Model, new ViewDataDictionary { { "id", ViewData["id"] } })
+        </div>
+        
+    </div>
+</div>

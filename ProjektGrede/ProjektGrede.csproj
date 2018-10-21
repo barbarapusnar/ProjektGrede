@@ -202,6 +202,7 @@
     <Compile Include="Controllers\PodatkiController.cs" />
     <Compile Include="Controllers\PodatkiVnosController.cs" />
     <Compile Include="Controllers\RacunController.cs" />
+    <Compile Include="Controllers\VodaVlagaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -226,13 +227,22 @@
       <DependentUpon>Grede.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\OdvisnostiViewModel.cs" />
     <Compile Include="Models\PodatkiSenzorjev.cs">
       <DependentUpon>Grede.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PodatkiVnos.cs">
       <DependentUpon>Grede.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PrevzemArso.cs">
+      <DependentUpon>Grede.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VodaVlaga.cs">
+      <DependentUpon>Grede.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Vreme.cs" />
+    <Compile Include="Models\Vreme1.cs" />
+    <Compile Include="Models\VsiPodatki.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -262,6 +272,17 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Slike\Bilje.jpg" />
+    <Content Include="Slike\WP_20181012_001.jpg" />
+    <Content Include="Slike\WP_20181012_002.jpg" />
+    <Content Include="Slike\WP_20181012_003.jpg" />
+    <Content Include="Slike\WP_20181012_004.jpg" />
+    <Content Include="Slike\WP_20181012_005.jpg" />
+    <Content Include="Slike\WP_20181012_006.jpg" />
+    <Content Include="Slike\WP_20181012_007.jpg" />
+    <Content Include="XMLFile1.xml">
+      <SubType>Designer</SubType>
     </Content>
     <EntityDeploy Include="Models\Grede.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -294,36 +315,12 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Slike\alarm.png" />
     <Content Include="Slike\arpa.png" />
     <Content Include="Slike\arso.png" />
-    <Content Include="Slike\Bilje.jpg" />
     <Content Include="Slike\BiljePodlaga.jpg" />
     <Content Include="Slike\BIOS-Color.png" />
-    <Content Include="Slike\clear.png" />
-    <Content Include="Slike\clearnight.png" />
-    <Content Include="Slike\cloudy.png" />
-    <Content Include="Slike\cloudynight.png" />
-    <Content Include="Slike\cona1.jpg" />
-    <Content Include="Slike\fog.png" />
-    <Content Include="Slike\irisacqua.jpg" />
-    <Content Include="Slike\italyicon.png" />
-    <Content Include="Slike\kornlogo.png" />
-    <Content Include="Slike\mostlysunny.png" />
-    <Content Include="Slike\ng.jpg" />
-    <Content Include="Slike\ozadje.png" />
-    <Content Include="Slike\partlycloudy.png" />
-    <Content Include="Slike\partlycloundynight.png" />
-    <Content Include="Slike\partlysunny.png" />
-    <Content Include="Slike\rain03.png" />
     <Content Include="Slike\scng1.png" />
-    <Content Include="Slike\sloveniaicon.png" />
-    <Content Include="Slike\snow.png" />
     <Content Include="Slike\solata.png" />
-    <Content Include="Slike\thunder.png" />
-    <Content Include="Slike\ukicon.png" />
-    <Content Include="Slike\unknown.png" />
-    <Content Include="Slike\vikng.jpg" />
     <Content Include="Slike\zelenjava1.png" />
     <Content Include="Slike\zelenjava2.png" />
     <Content Include="Slike\zelenjava3.png" />
@@ -351,6 +348,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\PodatkiVnos\_postajeVnos.cshtml" />
     <Content Include="Views\PodatkiVnos\_UstvariVnos.cshtml" />
+    <Content Include="Views\VodaVlaga\Index.cshtml" />
+    <Content Include="Views\VodaVlaga\_odvisnosti.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
