@@ -1,0 +1,114 @@
+﻿@model IEnumerable<ProjektGrede.Models.OdvisnostiBubble1>
+
+@{
+    Layout = null;
+}
+<div>
+    <div id="chart-dan">
+        <canvas id="bar-chart-dan"></canvas>
+    </div>
+</div>
+<script>
+    var podatki = @Html.Raw(Json.Encode(Model));
+
+    var p1 = [];
+    var p2 = [];
+    var p3 = [];
+    for (var i = 0, max = podatki.length; i < max; i += 1) {
+        if (podatki[i].IdGrede===1)
+            p1.push(podatki[i].koo);
+        if (podatki[i].IdGrede === 2)
+            p2.push(podatki[i].koo);
+        if (podatki[i].IdGrede === 3)
+            p3.push(podatki[i].koo);
+    }
+    //var datumi = podatki.map(function (item) {
+    //    var x = item.Cas.toString();
+    //    var konc = x.substr(6, 13);
+    //    var date = new Date(parseInt(konc));
+    //    var options = { hour: 'numeric', minute: 'numeric' }
+    //    var dateString = date.toLocaleString('de-DE', options);
+    //    return dateString;
+    //});
+    new Chart(document.getElementById("bar-chart-dan"), {
+        type: 'bubble',
+        data: {
+            datasets: [{
+                label: 'Greda1',
+                data: p1,
+                backgroundColor: '#AD8651',
+                borderColor: '#AD8651',
+                pointStyle: 'star'
+            },
+                {
+                    label: 'Greda2',
+                    data: p2,
+                    backgroundColor: '#419641',
+                    borderColor: '#419641'
+                },
+                {
+                    label: 'Greda3',
+                    data: p3,
+                    backgroundColor: '#00709C',
+                    borderColor: '#00709C',
+                    pointStyle: 'star'
+                },
+            ]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    //type: 'linear',
+                    position: 'bottom',
+                    type: 'category',
+                    labels: ['1.9.', '2.9', '3.9.', '4.9.', '5.9.', '6.9.',
+                        '7.9.', '8.9.', '9.9.', '10.9.', '11.9.', '12.9.', '13.9', '14.9', '15.9.',
+                        '16.9.', '17.9.', '18.9.',
+                        '19.9.', '20.9', '21.9.', '22.9.', '23.9.', '24.9.',
+                        '25.9.', '26.9.', '27.9.', '28.9.', '29.9.', '30.9.',
+                        '1.10.', '2.10.', '3.10.', '4.10.', '5.10.', '6.10.',
+                        '7.10.', '8.10.', '9.10.', '10.10.', '11.10.', '12.10.'],
+
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Datum',
+                        fontsize:11
+                    },
+                    ticks: {
+                        beginAtZero: true,
+                        stepvalue: 1                   
+                    }
+
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Vlaga',
+                        fontSize: 11
+                    },
+                    barPercentage: 0.85,
+                    categoryPercentage: 1,
+                    type: 'linear',
+                    id: 'yaxis1',
+                    display: true,
+                    position: 'left',
+                    ticks: {
+                        max: 100,
+                        beginAtZero: true,
+                        callback: function (value, index, values) {
+                            return value + '%';
+                        }
+                    }
+                }
+               ]
+
+            },
+            title: {
+                display: true,
+                text: 'Povezava med vodo na m2 in vlago',
+                fontSize: 16
+            }
+        }
+    });
+</script>

@@ -155,16 +155,27 @@
                         yAxisID: 'yaxis2',
                         cubicInterpolationMode: 'monotone'
                     },
+                    //{
+                    //    type: 'bar',
+                    //    label: "Vlaga",
+                    //    borderColor: '#A1ABDE',
+                    //    backgroundColor: "#A1ABDE",
+                    //    hoverBackgroundColor: "#959EC7",
+                    //    hoverBorderColor: "#959EC7",
+                    //    borderWidth: 2,
+                    //    data: vlaga,
+                    //    yAxisID: 'yaxis1'
+                    //}
                     {
-                        type: 'bar',
+                        type: 'line',
                         label: "Vlaga",
+                        backgroundColor: '#A1ABDE',
                         borderColor: '#A1ABDE',
-                        backgroundColor: "#A1ABDE",
-                        hoverBackgroundColor: "#959EC7",
-                        hoverBorderColor: "#959EC7",
                         borderWidth: 2,
                         data: vlaga,
-                        yAxisID: 'yaxis1'
+                        fill: false,
+                        yAxisID: 'yaxis1',
+                        cubicInterpolationMode: 'monotone'
                     }
 
                 ]
@@ -194,17 +205,18 @@
                             labelString: 'Vlaga',
                             fontSize: 11
                         },
-                        barPercentage: 0.85,
-                        categoryPercentage: 1,
+                        //barPercentage: 0.85,
+                        //categoryPercentage: 1,
                         type: 'linear',
                         id: 'yaxis1',
                         display: true,
                         position: 'right',
                         ticks: {
-                            max: 100,
-                            beginAtZero: true,
+                            max: 25000,
+                            min: 20000,
+                            beginAtZero: false,
                             callback: function (value, index, values) {
-                                return value + '%';
+                                return value + ' ';
                             }
                         },
                         gridLines: {
@@ -321,15 +333,15 @@
                         cubicInterpolationMode: 'monotone'
                     },
                     {
-                        type: 'bar',
+                        type: 'line',
                         label: "Vlaga",
+                        backgroundColor: '#A1ABDE',
                         borderColor: '#A1ABDE',
-                        backgroundColor: "#A1ABDE",
-                        hoverBackgroundColor: "#959EC7",
-                        hoverBorderColor: "#959EC7",
                         borderWidth: 2,
                         data: vlaga,
-                        yAxisID: 'yaxis1'
+                        fill: false,
+                        yAxisID: 'yaxis1',
+                        cubicInterpolationMode: 'monotone'
                     }
                 ]
             },
@@ -352,18 +364,18 @@
                             labelString: 'Vlaga',
                             fontSize: 11
                         },
-                        barPercentage: 0.9,
-                        categoryPercentage: 1,
+                        //barPercentage: 0.85,
+                        //categoryPercentage: 1,
                         type: 'linear',
                         id: 'yaxis1',
                         display: true,
                         position: 'right',
-                        display: true,
                         ticks: {
-                            max: 100,
-                            beginAtZero: true,
+                            max: 25000,
+                            min: 20000,
+                            beginAtZero: false,
                             callback: function (value, index, values) {
-                                return value + '%';
+                                return value + ' ';
                             }
                         },
                         gridLines: {
@@ -480,15 +492,15 @@
                         cubicInterpolationMode: 'monotone'
                     },
                     {
-                        type: 'bar',
+                        type: 'line',
                         label: "Vlaga",
+                        backgroundColor: '#A1ABDE',
                         borderColor: '#A1ABDE',
-                        backgroundColor: "#A1ABDE",
-                        hoverBackgroundColor: "#959EC7",
-                        hoverBorderColor: "#959EC7",
                         borderWidth: 2,
                         data: vlaga,
-                        yAxisID: 'yaxis1'
+                        fill: false,
+                        yAxisID: 'yaxis1',
+                        cubicInterpolationMode: 'monotone'
                     }
 
                 ]
@@ -513,19 +525,19 @@
                             labelString: 'Vlaga',
                             fontSize: 11
                         },
-                        barPercentage: 0.9,
-                        categoryPercentage: 1,
+                        //barPercentage: 0.85,
+                        //categoryPercentage: 1,
                         type: 'linear',
                         id: 'yaxis1',
                         display: true,
                         position: 'right',
                         ticks: {
-                            max: 100,
-                            beginAtZero: true,
+                            max: 25000,
+                            min: 20000,
+                            beginAtZero: false,
                             callback: function (value, index, values) {
-                                return value + '%';
+                                return value + ' ';
                             }
-                        },
                         gridLines: {
                             drawOnChartArea: false,
                         }

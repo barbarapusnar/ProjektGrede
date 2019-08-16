@@ -45,7 +45,7 @@
                 @Html.DisplayFor(modelItem => item.Temp3)°C
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Vlaga)%
+                @Html.DisplayFor(modelItem => item.Vlaga)
             </td>
         </tr>
         }
@@ -121,15 +121,24 @@
                     cubicInterpolationMode: 'monotone'
                 },
                 {
-                    type: 'bar',
+                    //type: 'bar',
+                    //label: "Vlaga",
+                    //borderColor: '#A1ABDE',
+                    //backgroundColor: "#A1ABDE",
+                    //hoverBackgroundColor: "#959EC7",
+                    //hoverBorderColor: "#959EC7",
+                    //borderWidth: 2,
+                    //data: vlaga,
+                    //yAxisID: 'yaxis1'
+                    type: 'line',
                     label: "Vlaga",
+                    backgroundColor: '#A1ABDE',
                     borderColor: '#A1ABDE',
-                    backgroundColor: "#A1ABDE",
-                    hoverBackgroundColor: "#959EC7",
-                    hoverBorderColor: "#959EC7",
                     borderWidth: 2,
                     data: vlaga,
-                    yAxisID: 'yaxis1'
+                    fill: false,
+                    yAxisID: 'yaxis1',
+                    cubicInterpolationMode: 'monotone'
                 }
 
             ]
@@ -147,27 +156,53 @@
                         fontSize: 11
                     },
                 }],
-                yAxes: [{
-                    display: true,
-                    scaleLabel: {
+                yAxes: [
+                //    {
+                //    display: true,
+                //    scaleLabel: {
+                //        display: true,
+                //        labelString: 'Vlaga',
+                //        fontSize: 11
+                //    },
+                //    barPercentage: 0.85,
+                //    categoryPercentage: 1,
+                //    type: 'linear',
+                //    id: 'yaxis1',
+                //    display: true,
+                //    position: 'right',
+                //    ticks: {
+                //        max: 100,
+                //        beginAtZero: true,
+                //        callback: function (value, index, values) {
+                //            return value + '%';
+                //        }
+                //    },
+                //},
+                    {
                         display: true,
-                        labelString: 'Vlaga',
-                        fontSize: 11
-                    },
-                    barPercentage: 0.85,
-                    categoryPercentage: 1,
-                    type: 'linear',
-                    id: 'yaxis1',
-                    display: true,
-                    position: 'right',
-                    ticks: {
-                        max: 100,
-                        beginAtZero: true,
-                        callback: function (value, index, values) {
-                            return value + '%';
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Vlaga',
+                            fontSize: 11
+                        },
+                        //barPercentage: 0.85,
+                        //categoryPercentage: 1,
+                        type: 'linear',
+                        id: 'yaxis1',
+                        display: true,
+                        position: 'right',
+                        ticks: {
+                            max: 25000,
+                            min: 20000,
+                            beginAtZero: false,
+                            callback: function (value, index, values) {
+                                return value + ' ';
+                            }
+                        },
+                        gridLines: {
+                            drawOnChartArea: false,
                         }
                     },
-                },
                     {
                         display: true,
                         scaleLabel: {
